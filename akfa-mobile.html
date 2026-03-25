@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>AKFA Eshik & Romlar | Premium Yog'och va Metall Konstruksiyalar</title>
+  <meta name="description" content="AKFA - Toshkentdagi eng yaxshi eshik va rom ishlab chiqaruvchisi. Premium sifat, zamonaviy dizayn, 5 yil kafolat." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    :root {
+      --navy:    #0a0f1e;
+      --navy2:   #0d1630;
+      --navy3:   #111d3e;
+      --blue:    #1a56db;
+      --blue2:   #2563eb;
+      --blue3:   #3b82f6;
+      --cyan:    #06b6d4;
+      --cyan2:   #22d3ee;
+      --gold:    #f59e0b;
+      --white:   #f0f4ff;
+      --gray:    #8ea3c3;
+      --card-bg: rgba(255,255,255,0.04);
+      --border:  rgba(59,130,246,0.18);
+      --shadow:  0 8px 40px rgba(6,182,212,0.12);
+      --radius:  16px;
+      --font-head:'Rajdhani',sans-serif;
+      --font-body:'Nunito',sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--navy);color:var(--white);font-family:var(--font-body);overflow-x:hidden;line-height:1.6;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+    ul{list-style:none;}
+
+    ::-webkit-scrollbar{width:4px;}
+    ::-webkit-scrollbar-track{background:var(--navy2);}
+    ::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px;}
+
+    .container{max-width:520px;margin:0 auto;padding:0 16px;}
+
+    .section-title{font-family:var(--font-head);font-size:clamp(1.6rem,7vw,2.4rem);font-weight:700;letter-spacing:1px;line-height:1.2;}
+    .section-title span{color:var(--cyan);}
+    .section-sub{color:var(--gray);font-size:0.9rem;margin-top:6px;}
+
+    .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);color:var(--cyan2);font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:12px;}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:50px;font-weight:700;font-size:0.95rem;transition:.3s;cursor:pointer;border:none;width:100%;}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;box-shadow:0 4px 24px rgba(26,86,219,0.35);}
+    .btn-primary:active{transform:scale(0.97);}
+    .btn-outline{background:transparent;border:2px solid var(--blue3);color:var(--blue3);}
+    .btn-outline:active{background:var(--blue3);color:#fff;}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),#fbbf24);color:var(--navy);}
+
+    /* ===== LOADER ===== */
+    #loader{position:fixed;inset:0;background:var(--navy);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .5s;}
+    #loader.hide{opacity:0;pointer-events:none;}
+    .loader-logo{font-family:var(--font-head);font-size:2.2rem;font-weight:700;letter-spacing:4px;}
+    .loader-logo span{color:var(--cyan);}
+    .loader-bar{width:160px;height:3px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;}
+    .loader-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:3px;animation:loaderFill 1.2s ease-out forwards;}
+    @keyframes loaderFill{from{width:0}to{width:100%}}
+
+    /* ===== TOAST ===== */
+    .toast{position:fixed;top:80px;right:12px;left:12px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;padding:14px 18px;border-radius:14px;font-size:0.88rem;font-weight:600;z-index:9999;transform:translateY(-120px);transition:.4s;box-shadow:0 8px 30px rgba(0,0,0,0.3);text-align:center;}
+    .toast.show{transform:translateY(0);}
+
+    /* ===== FIXED ACTIONS ===== */
+    .fixed-actions{position:fixed;bottom:20px;right:16px;z-index:900;display:flex;flex-direction:column;gap:12px;}
+    .fa-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:.3s;text-decoration:none;border:none;position:relative;}
+    .fa-btn:active{transform:scale(0.93);}
+    .fa-tg{background:#229ED9;color:#fff;}
+    .fa-call{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;}
+    .fa-order{background:linear-gradient(135deg,var(--gold),#fbbf24);color:var(--navy);}
+    .pulse-ring{position:absolute;width:52px;height:52px;border-radius:50%;border:2px solid var(--cyan);animation:pulseRing 2s infinite;pointer-events:none;}
+    @keyframes pulseRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+
+    /* ===== HEADER ===== */
+    #header{position:fixed;top:0;left:0;right:0;z-index:999;transition:.4s;padding:12px 0;}
+    #header.scrolled{background:rgba(10,15,30,0.96);backdrop-filter:blur(16px);padding:8px 0;border-bottom:1px solid var(--border);box-shadow:0 4px 30px rgba(0,0,0,0.4);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:flex;align-items:center;gap:8px;}
+    .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .logo-text{font-family:var(--font-head);font-size:1.3rem;font-weight:700;letter-spacing:2px;}
+    .logo-text span{color:var(--cyan);}
+    .logo-sub{font-size:0.6rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;display:block;margin-top:-4px;}
+    .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+    .burger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
+    .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .burger.open span:nth-child(2){opacity:0;}
+    .burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,15,30,0.98);backdrop-filter:blur(20px);z-index:998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transform:translateX(100%);transition:.4s cubic-bezier(.77,0,.175,1);}
+    .mobile-nav.open{transform:translateX(0);}
+    .mobile-nav a{font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:var(--white);letter-spacing:2px;}
+    .mobile-nav a:active{color:var(--cyan);}
+    .mobile-nav .social-row{display:flex;gap:14px;margin-top:16px;}
+    .mobile-nav .social-row a{font-size:1.3rem;color:var(--gray);background:var(--card-bg);border:1px solid var(--border);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;}
+
+    /* ===== HERO ===== */
+    #hero{min-height:100dvh;display:flex;align-items:center;padding:90px 0 60px;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(26,86,219,0.18) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(6,182,212,0.12) 0%,transparent 50%),linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);}
+    .hero-grid-line{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.05) 1px,transparent 1px);background-size:40px 40px;}
+    .bg-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+    .hero-content{position:relative;z-index:2;}
+    .hero-title{font-family:var(--font-head);font-size:clamp(2.4rem,12vw,3.8rem);font-weight:700;line-height:1.05;letter-spacing:1px;margin-bottom:16px;}
+    .hero-title .line1{display:block;color:var(--white);}
+    .hero-title .line2{display:block;color:var(--cyan2);}
+    .hero-title .line3{display:block;background:linear-gradient(90deg,var(--blue3),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero-desc{color:var(--gray);font-size:0.92rem;margin-bottom:22px;line-height:1.8;}
+    .hero-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+    .hero-stats{display:flex;gap:0;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+    .stat-item{flex:1;text-align:center;padding:14px 8px;}
+    .stat-item+.stat-item{border-left:1px solid var(--border);}
+    .stat-num{font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--cyan2);line-height:1;}
+    .stat-label{font-size:0.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:3px;}
+    .scroll-ind{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--gray);font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;}
+    .scroll-wheel{width:22px;height:34px;border:2px solid var(--border);border-radius:12px;display:flex;justify-content:center;padding-top:5px;}
+    .scroll-wheel::before{content:'';width:3px;height:7px;background:var(--cyan);border-radius:2px;animation:scrollDown 1.5s infinite;}
+    @keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(10px)}}
+
+    /* ===== TICKER ===== */
+    .ticker-wrap{background:linear-gradient(135deg,var(--blue),var(--cyan));padding:10px 0;overflow:hidden;}
+    .ticker-inner{display:flex;gap:32px;white-space:nowrap;animation:ticker 22s linear infinite;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ticker-item{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-head);font-size:0.82rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+    .ticker-dot{width:5px;height:5px;background:#fff;border-radius:50%;opacity:.6;}
+
+    /* ===== COUNTERS ===== */
+    .counter-section{padding:48px 0;}
+    .counter-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .counter-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 14px;text-align:center;}
+    .cc-icon{font-size:1.6rem;margin-bottom:8px;}
+    .cc-num{font-family:var(--font-head);font-size:2.2rem;font-weight:700;color:var(--cyan2);line-height:1;}
+    .cc-plus{color:var(--gold);}
+    .cc-label{color:var(--gray);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;margin-top:5px;}
+
+    /* ===== ABOUT ===== */
+    #about{padding:60px 0;}
+    .about-img-wrap{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:var(--card-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+    .about-img-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--gray);opacity:.35;}
+    .about-img-placeholder i{font-size:4rem;}
+    .about-corner-card{background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:14px;padding:16px 20px;text-align:center;margin-bottom:20px;}
+    .about-corner-num{font-family:var(--font-head);font-size:2rem;font-weight:700;color:#fff;}
+    .about-corner-lbl{font-size:0.72rem;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1px;}
+    .about-features{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+    .af-item{display:flex;align-items:flex-start;gap:12px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px;}
+    .af-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+    .af-title{font-weight:700;font-size:0.9rem;margin-bottom:2px;}
+    .af-desc{color:var(--gray);font-size:0.78rem;}
+
+    /* ===== WORKS ===== */
+    #works{padding:60px 0;}
+    .works-tabs{display:flex;gap:8px;margin:20px 0;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;}
+    .works-tabs::-webkit-scrollbar{display:none;}
+    .tab-btn{padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;transition:.3s;white-space:nowrap;flex-shrink:0;}
+    .tab-btn.active,.tab-btn:active{background:var(--blue2);border-color:var(--blue2);color:#fff;}
+    .gallery-grid{display:flex;flex-direction:column;gap:12px;}
+    .gallery-item{border-radius:14px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;position:relative;background:var(--card-bg);}
+    .gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--gray);background:linear-gradient(135deg,var(--navy3),var(--navy2));font-size:0.8rem;}
+    .gallery-placeholder i{font-size:2rem;opacity:.25;}
+    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,15,30,.85) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;}
+    .go-title{font-family:var(--font-head);font-size:1rem;font-weight:700;}
+    .go-sub{font-size:0.75rem;color:var(--gray);}
+
+    /* ===== CONTACT ===== */
+    #contact{padding:60px 0;}
+    .contact-info{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+    .ci-item{display:flex;align-items:flex-start;gap:14px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px;}
+    .ci-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+    .ci-label{font-size:0.7rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;}
+    .ci-value{font-weight:700;font-size:0.92rem;}
+    .ci-sub{font-size:0.75rem;color:var(--gray);}
+    .social-links{display:flex;gap:10px;margin-bottom:24px;}
+    .social-link{display:flex;align-items:center;gap:7px;padding:10px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:50px;font-size:0.83rem;font-weight:600;flex:1;justify-content:center;}
+    .social-link:active{background:var(--blue2);border-color:var(--blue2);}
+    .map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:200px;margin-bottom:24px;}
+    .map-wrap iframe{width:100%;height:100%;border:none;}
+
+    /* ===== ORDER FORM ===== */
+    .order-form-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px 16px;}
+    .form-title{font-family:var(--font-head);font-size:1.3rem;font-weight:700;margin-bottom:16px;}
+    .form-group{margin-bottom:14px;}
+    .form-group label{display:block;font-size:0.8rem;color:var(--gray);margin-bottom:5px;font-weight:600;}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--white);font-family:var(--font-body);font-size:0.92rem;transition:.3s;outline:none;-webkit-appearance:none;}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue3);background:rgba(59,130,246,0.06);}
+    .form-group select option{background:var(--navy2);}
+    .form-group textarea{height:80px;resize:vertical;}
+    .form-note{font-size:0.75rem;color:var(--gray);margin-top:10px;text-align:center;}
+    .form-note i{color:var(--cyan);}
+
+    /* ===== FOOTER ===== */
+    footer{background:var(--navy2);border-top:1px solid var(--border);padding:40px 0 100px;}
+    .footer-brand{margin-bottom:20px;}
+    .footer-brand .logo{margin-bottom:12px;}
+    .footer-desc{color:var(--gray);font-size:0.83rem;line-height:1.7;margin-bottom:14px;}
+    .footer-socials{display:flex;gap:10px;}
+    .footer-social{width:36px;height:36px;background:var(--card-bg);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;color:var(--gray);}
+    .footer-col h4{font-family:var(--font-head);font-size:0.9rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:24px 0 12px;color:var(--cyan2);}
+    .footer-links{display:flex;flex-direction:column;gap:8px;}
+    .footer-links a{color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:7px;}
+    .footer-links a i{font-size:0.65rem;color:var(--blue3);}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:20px;margin-top:24px;}
+    .fb-copy{color:var(--gray);font-size:0.78rem;margin-bottom:10px;}
+    .fb-copy span{color:var(--cyan2);}
+    .fb-badges{display:flex;gap:8px;flex-wrap:wrap;}
+    .fb-badge{padding:4px 10px;background:rgba(59,130,246,0.1);border:1px solid var(--border);border-radius:50px;font-size:0.68rem;color:var(--gray);}
+
+    /* ===== MODAL ===== */
+    .modal-overlay{position:fixed;inset:0;background:rgba(5,10,25,.88);backdrop-filter:blur(12px);z-index:9999;display:flex;align-items:flex-end;padding:0;opacity:0;pointer-events:none;transition:.3s;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .modal-box{background:var(--navy2);border:1px solid var(--border);border-radius:24px 24px 0 0;padding:28px 18px 36px;width:100%;position:relative;transform:translateY(100%);transition:.35s cubic-bezier(.4,0,.2,1);max-height:90dvh;overflow-y:auto;}
+    .modal-overlay.open .modal-box{transform:translateY(0);}
+    .modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 20px;}
+    .modal-close{position:absolute;top:16px;right:16px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray);font-size:0.9rem;}
+    .modal-title{font-family:var(--font-head);font-size:1.5rem;font-weight:700;margin-bottom:4px;}
+    .modal-sub{color:var(--gray);font-size:0.85rem;margin-bottom:20px;}
+    .modal-success{text-align:center;padding:20px 0;display:none;}
+    .modal-success i{font-size:3rem;color:var(--cyan);margin-bottom:12px;display:block;}
+    .modal-success h3{font-family:var(--font-head);font-size:1.4rem;margin-bottom:6px;}
+    .modal-success p{color:var(--gray);font-size:0.85rem;}
+
+    .phone-blink::after{content:'';display:inline-block;width:6px;height:6px;background:var(--cyan);border-radius:50%;margin-left:5px;animation:blink 1.2s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* particle canvas */
+    #bg-canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;opacity:.3;}
+
+    section{position:relative;}
+    .text-center{text-align:center;}
+  </style>
+</head>
+<body>
+
+<!-- CANVAS BG -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">AKFA <span>DOORS</span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <p style="color:var(--gray);font-size:0.75rem;letter-spacing:2px;">Premium Eshik & Romlar</p>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="toastMsg">Yuborildi!</span></div>
+
+<!-- FIXED ACTIONS -->
+<div class="fixed-actions">
+  <a href="https://t.me/akfa_eshik" class="fa-btn fa-tg">
+    <div class="pulse-ring"></div>
+    <i class="fa-brands fa-telegram"></i>
+  </a>
+  <a href="tel:+998901234567" class="fa-btn fa-call">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+  <button class="fa-btn fa-order" onclick="openModal()">
+    <i class="fa-solid fa-clipboard-list"></i>
+  </button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div id="modalForm">
+      <div class="badge">📋 Buyurtma</div>
+      <div class="modal-title">Buyurtma Bering</div>
+      <div class="modal-sub">10 daqiqada siz bilan bog'lanamiz 🚀</div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-user" style="color:var(--cyan);margin-right:4px;"></i> Ismingiz *</label>
+        <input type="text" id="mName" placeholder="Masalan: Jasur" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-phone" style="color:var(--cyan);margin-right:4px;"></i> Telefon *</label>
+        <input type="tel" id="mPhone" placeholder="+998 90 123 45 67" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-door-open" style="color:var(--cyan);margin-right:4px;"></i> Mahsulot turi</label>
+        <select id="mType">
+          <option value="">Tanlang...</option>
+          <option>🚪 Kirish eshigi (Premium)</option>
+          <option>🏠 Ichki eshiklar</option>
+          <option>🪟 Metall-Plastik oynalar</option>
+          <option>🌿 Alyuminiy romlar</option>
+          <option>🔒 Metall eshiklar</option>
+          <option>📐 Boshqa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-comment" style="color:var(--cyan);margin-right:4px;"></i> Izoh</label>
+        <textarea id="mNote" placeholder="Qo'shimcha ma'lumot..."></textarea>
+      </div>
+      <button class="btn btn-primary" style="font-size:1rem;padding:15px;" onclick="submitOrder()">
+        <i class="fa-brands fa-telegram"></i> Telegram orqali yuborish
+      </button>
+      <p class="form-note"><i class="fa-solid fa-shield-halved"></i> Ma'lumotlaringiz maxfiy saqlanadi</p>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Buyurtma Qabul!</h3>
+      <p>Telegram orqali yuborildi.<br/>Tez orada siz bilan bog'lanamiz! 📞</p>
+      <button class="btn btn-primary" style="margin-top:18px;" onclick="closeModal()">Yopish</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#hero" onclick="closeMobileNav()">🏠 Bosh Sahifa</a>
+  <a href="#about" onclick="closeMobileNav()">🏢 Biz Haqimizda</a>
+  <a href="#works" onclick="closeMobileNav()">🖼️ Ishlarimiz</a>
+  <a href="#contact" onclick="closeMobileNav()">📞 Aloqa</a>
+  <div class="social-row">
+    <a href="https://t.me/Muslim_akfa"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://instagram.com/muslim.akfa"><i class="fa-brands fa-instagram"></i></a>
+    <a href="tel:+998940555275"><i class="fa-solid fa-phone"></i></a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#hero" class="logo">
+        <div class="logo-icon">🚪</div>
+        <div>
+          <div class="logo-text">Muslim <span>AKFA</span></div>
+          <span class="logo-sub">Eshik & Romlar</span>
+        </div>
+      </a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="btn btn-primary" style="width:auto;padding:9px 16px;font-size:0.82rem;" onclick="openModal()">
+          <i class="fa-solid fa-clipboard-list"></i> Buyurtma
+        </button>
+        <div class="burger" id="burger" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-line"></div>
+  <div class="bg-glow" style="width:350px;height:350px;background:rgba(26,86,219,0.13);top:-80px;left:-80px;"></div>
+  <div class="bg-glow" style="width:300px;height:300px;background:rgba(6,182,212,0.08);bottom:-30px;right:-60px;"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="badge" data-aos="fade-down">
+        <i class="fa-solid fa-star"></i> Premium · 5 Yil Kafolat
+      </div>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="80">
+        <span class="line1">Sifatli</span>
+        <span class="line2">Eshik & Romlar</span>
+        <span class="line3">Urgutda #1</span>
+      </h1>
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="160">
+        🏆 AKFA — zamonaviy va ishonchli eshik hamda rom ishlab chiqaruvchisi. Metall, yog'och, plastik — har qanday dizayn, to'liq kafolat bilan! ✨
+      </p>
+      <div class="hero-btns" data-aos="fade-up" data-aos-delay="240">
+        <button class="btn btn-primary" onclick="openModal()">
+          <i class="fa-solid fa-clipboard-list"></i> Buyurtma Berish
+        </button>
+        <a href="#works" class="btn btn-outline">
+          <i class="fa-solid fa-images"></i> Ishlarimizni Ko'ring
+        </a>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="320">
+        <div class="stat-item">
+          <div class="stat-num" data-count="500">0</div>
+          <div class="stat-label">Mijoz</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="8">0</div>
+          <div class="stat-label">Yil</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="5">0</div>
+          <div class="stat-label">Kafolat</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="100">0</div>
+          <div class="stat-label">% Sifat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-wheel"></div>
+    <span>Pastga</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <div class="ticker-item"><span class="ticker-dot"></span>🚪 Premium Eshiklar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🪟 Plastik Oynalar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🌿 Alyuminiy Romlar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🔒 Metall Eshiklar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>⭐ 5 Yil Kafolat</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🏆 Sifat Belgisi</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🚀 Tez Montaj</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>💎 Premium Sifat</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🚪 Premium Eshiklar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🪟 Plastik Oynalar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🌿 Alyuminiy Romlar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🔒 Metall Eshiklar</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>⭐ 5 Yil Kafolat</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🏆 Sifat Belgisi</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>🚀 Tez Montaj</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>💎 Premium Sifat</div>
+  </div>
+</div>
+
+<!-- COUNTERS -->
+<div class="counter-section">
+  <div class="container">
+    <div class="counter-grid">
+      <div class="counter-card" data-aos="fade-up">
+        <div class="cc-icon">🚪</div>
+        <div class="cc-num"><span data-count="1200">0</span><span class="cc-plus">+</span></div>
+        <div class="cc-label">O'rnatilgan Eshiklar</div>
+      </div>
+      <div class="counter-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="cc-icon">😊</div>
+        <div class="cc-num"><span data-count="500">0</span><span class="cc-plus">+</span></div>
+        <div class="cc-label">Mamnun Mijozlar</div>
+      </div>
+      <div class="counter-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="cc-icon">⭐</div>
+        <div class="cc-num"><span data-count="8">0</span></div>
+        <div class="cc-label">Yillik Tajriba</div>
+      </div>
+      <div class="counter-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="cc-icon">🏆</div>
+        <div class="cc-num"><span data-count="15">0</span><span class="cc-plus">+</span></div>
+        <div class="cc-label">Mahsulot Turlari</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div data-aos="fade-up">
+      <div class="badge">🏢 Biz Haqimizda</div>
+      <h2 class="section-title">AKFA — <span>Ishonchli</span> Eshik Yechimi</h2>
+      <p class="section-sub" style="margin-bottom:18px;">2016-yildan beri Urgutda premium eshik va rom yetakchisi 🏆</p>
+    </div>
+
+    <div class="about-img-wrap" data-aos="fade-up" data-aos-delay="80">
+      <!-- <img src="rasm.jpg" alt="AKFA" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="about-img-placeholder">
+        <i class="fa-solid fa-industry"></i>
+        <p style="font-size:0.75rem;">Kompaniya rasmi</p>
+      </div>
+    </div>
+
+    <div class="about-corner-card" data-aos="fade-up" data-aos-delay="120">
+      <div style="display:flex;justify-content:space-around;">
+        <div>
+          <div class="about-corner-num">8+</div>
+          <div class="about-corner-lbl">Yil Tajriba</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,.2);"></div>
+        <div>
+          <div class="about-corner-num">99%</div>
+          <div class="about-corner-lbl">Mamnun Mijoz</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,.2);"></div>
+        <div>
+          <div class="about-corner-num">5 yil </div>
+          <div class="about-corner-lbl">Kafolat</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="color:var(--gray);font-size:0.88rem;line-height:1.9;margin:18px 0;" data-aos="fade-up">
+      Biz har bir mijozning uyini nafaqat chiroyli, balki xavfsiz va issiq qilishga intilamiz. Zamonaviy Yevropa texnologiyalari va mahalliy ustallar mehnati birlashganda — siz eng yaxshi natijaga ega bo'lasiz. 🌿
+    </p>
+
+    <div class="about-features" data-aos="fade-up" data-aos-delay="80">
+      <div class="af-item">
+        <div class="af-icon">🔬</div>
+        <div>
+          <div class="af-title">Sifat Nazorati</div>
+          <div class="af-desc">Har bir mahsulot 3 bosqichli sifat tekshiruvidan o'tkaziladi</div>
+        </div>
+      </div>
+      <div class="af-item">
+        <div class="af-icon">🛠️</div>
+        <div>
+          <div class="af-title">Professional Montaj</div>
+          <div class="af-desc">Tajribali ustallar tomonidan 1-3 kun ichida o'rnatiladi</div>
+        </div>
+      </div>
+      <div class="af-item">
+        <div class="af-icon">📞</div>
+        <div>
+          <div class="af-title">Servis Xizmati</div>
+          <div class="af-desc">O'rnatgandan keyin ham doimo yordam berishga tayyormiz</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;" data-aos="fade-up">
+      <button class="btn btn-primary" onclick="openModal()">
+        <i class="fa-solid fa-phone"></i> Bepul Konsultatsiya
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="container">
+    <div data-aos="fade-up">
+      <div class="badge">🖼️ Portfolio</div>
+      <h2 class="section-title">Bizning <span>Ishlarimiz</span></h2>
+      <p class="section-sub">Har bir loyiha — mahorat va ishonch uyg'unligi 🎯</p>
+    </div>
+
+    <div class="works-tabs" data-aos="fade-up" data-aos-delay="80">
+      <button class="tab-btn active" onclick="filterWorks('all',this)">🏆 Barchasi</button>
+      <button class="tab-btn" onclick="filterWorks('door',this)">🚪 Kirish</button>
+      <button class="tab-btn" onclick="filterWorks('inner',this)">🏠 Ichki</button>
+      <button class="tab-btn" onclick="filterWorks('window',this)">🪟 Oyna</button>
+      <button class="tab-btn" onclick="filterWorks('metal',this)">🔒 Metall</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid" data-aos="fade-up" data-aos-delay="160">
+      <div class="gallery-item" data-cat="door">
+        <div class="gallery-placeholder"><i class="fa-solid fa-door-open"></i><span>Kirish eshigi — Chilonzor, 2024</span></div>
+        <div class="gallery-overlay"><div class="go-title">🚪 Premium Kirish Eshigi</div><div class="go-sub">Chilonzor • 2024</div></div>
+      </div>
+      <div class="gallery-item" data-cat="window">
+        <div class="gallery-placeholder"><i class="fa-solid fa-table-cells"></i><span>Plastik oyna — Yunusobod</span></div>
+        <div class="gallery-overlay"><div class="go-title">🪟 Metall-Plastik Oyna</div><div class="go-sub">Yunusobod • 2024</div></div>
+      </div>
+      <div class="gallery-item" data-cat="inner">
+        <div class="gallery-placeholder"><i class="fa-solid fa-house"></i><span>Ichki eshiklar — Mirzo Ulug'bek</span></div>
+        <div class="gallery-overlay"><div class="go-title">🏠 MDF Ichki Eshiklar</div><div class="go-sub">Mirzo Ulug'bek • 2023</div></div>
+      </div>
+      <div class="gallery-item" data-cat="metal">
+        <div class="gallery-placeholder"><i class="fa-solid fa-shield"></i><span>Metall eshik — Shayxontohur</span></div>
+        <div class="gallery-overlay"><div class="go-title">🔒 Xavfsizlik Eshigi</div><div class="go-sub">Shayxontohur • 2024</div></div>
+      </div>
+      <div class="gallery-item" data-cat="door">
+        <div class="gallery-placeholder"><i class="fa-solid fa-door-closed"></i><span>Alyuminiy rom — Sergeli</span></div>
+        <div class="gallery-overlay"><div class="go-title">🌿 Alyuminiy Romlar</div><div class="go-sub">Sergeli • 2024</div></div>
+      </div>
+      <div class="gallery-item" data-cat="window">
+        <div class="gallery-placeholder"><i class="fa-solid fa-building"></i><span>Ofis oynalar — Yakkasaroy</span></div>
+        <div class="gallery-overlay"><div class="go-title">🏢 Ofis Oynalar</div><div class="go-sub">Yakkasaroy • 2023</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;" data-aos="fade-up">
+      <a href="https://instagram.com/muslim.akfa" class="btn btn-outline">
+        <i class="fa-brands fa-instagram"></i> Instagramda Barcha Ishlar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div data-aos="fade-up">
+      <div class="badge">📞 Aloqa</div>
+      <h2 class="section-title">Biz Bilan <span>Bog'laning</span></h2>
+      <p class="section-sub">10 daqiqada javob beramiz! ⚡</p>
+    </div>
+
+    <div class="contact-info" style="margin-top:20px;" data-aos="fade-up" data-aos-delay="80">
+      <div class="ci-item">
+        <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <div class="ci-label">Telefon</div>
+          <div class="ci-value"><a href="tel:+998940555275" style="color:inherit;">+998 94 055 52 75</a></div>
+          <div class="ci-sub"><a href="tel:+998950055275" style="color:var(--gray);">+998 95 005 52 75</a></div>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon"><i class="fa-brands fa-telegram"></i></div>
+        <div>
+          <div class="ci-label">Telegram</div>
+          <div class="ci-value"><a href="https://t.me/Muslim_akfa" style="color:inherit;">Muslim Akfa</a></div>
+          <div class="ci-sub">Tez va qulay muloqot</div>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <div class="ci-label">Manzil</div>
+          <div class="ci-value">Chilonzor tumani</div>
+          <div class="ci-sub">📍 Do'stlik ko'chasi, 15-uy</div>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <div class="ci-label">Ish Vaqti</div>
+          <div class="ci-value">Du-Shan: 09:00 – 19:00</div>
+          <div class="ci-sub">🗓️ Yakshanba: 10:00 – 16:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-links" data-aos="fade-up" data-aos-delay="120">
+      <a href="https://t.me/Muslim_akfa" class="social-link">
+        <i class="fa-brands fa-telegram" style="color:#229ED9;"></i> Telegram
+      </a>
+      <a href="https://instagram.com/muslim.akfa" class="social-link">
+        <i class="fa-brands fa-instagram" style="color:#E1306C;"></i> Instagram
+      </a>
+    </div>
+
+    <div class="map-wrap" data-aos="fade-up" data-aos-delay="160">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6160.0435103705395!2d67.20188319683078!3d39.468837229760034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4cd150203c923b%3A0xfaee157291466f4b!2sAkfa.%20Muslim!5e0!3m2!1suz!2s!4v1774445764183!5m2!1suz!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Order form -->
+    <div class="order-form-wrap" data-aos="fade-up" data-aos-delay="200">
+      <div class="badge">📋 Buyurtma</div>
+      <div class="form-title">Buyurtma Bering</div>
+      <p style="color:var(--gray);font-size:0.83rem;margin-bottom:18px;">Formani to'ldiring — 10 daqiqada javob ⚡</p>
+      <div class="form-group">
+        <label>👤 Ismingiz *</label>
+        <input type="text" id="cName" placeholder="Jasur" />
+      </div>
+      <div class="form-group">
+        <label>📱 Telefon *</label>
+        <input type="tel" id="cPhone" placeholder="+998 90 ..." />
+      </div>
+      <div class="form-group">
+        <label>🚪 Mahsulot turi</label>
+        <select id="cType">
+          <option value="">Tanlang...</option>
+          <option>🚪 Kirish eshigi (Premium)</option>
+          <option>🏠 Tashki deraza (Premium)</option>
+          <option>🏠 Ichki eshiklar</option>
+          <option>🏠 Ichki derazalar</option>
+          <option>🪟 Eshik va Deraza oynalar</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label>📍 Manzill</label>
+        <select id="cDistrict">
+          <option value="">Tanlang</option>
+          <option>Urgut shahar</option>
+          <option>Quyi Tegana MFY</option>
+          <option>Algar MFY</option>
+          <option>Yuqori Tegana MFY</option>
+          <option>Qayroqli MFY</option>
+          <option>O'zbekiston MFY</option>
+          <option>Boshqa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>💬 Qo'shimcha</label>
+        <textarea id="cNote" placeholder="O'lcham, rang haqida..."></textarea>
+      </div>
+      <button class="btn btn-primary" style="font-size:1rem;padding:15px;" onclick="submitContactForm()">
+        <i class="fa-brands fa-telegram"></i> Yuborish
+      </button>
+      <p class="form-note"><i class="fa-solid fa-lock"></i> Xavfsiz • <i class="fa-solid fa-bolt"></i> Tez javob • <i class="fa-solid fa-gift"></i> Bepul konsultatsiya</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <a href="#hero" class="logo" style="margin-bottom:12px;display:inline-flex;">
+        <div class="logo-icon">🚪</div>
+        <div>
+          <div class="logo-text">AK<span>FA</span></div>
+          <span class="logo-sub">Eshik & Romlar</span>
+        </div>
+      </a>
+      <p class="footer-desc">Toshkentdagi eng ishonchli eshik va rom ishlab chiqaruvchisi. Premium sifat, zamonaviy dizayn va 5 yil kafolat! 🏆</p>
+      <div class="footer-socials">
+        <a href="https://t.me/akfa_eshik" class="footer-social"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://instagram.com/akfa_eshik" class="footer-social"><i class="fa-brands fa-instagram"></i></a>
+        <a href="tel:+998901234567" class="footer-social"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>🗺️ Sahifalar</h4>
+      <div class="footer-links">
+        <a href="#hero"><i class="fa-solid fa-chevron-right"></i> Bosh Sahifa</a>
+        <a href="#about"><i class="fa-solid fa-chevron-right"></i> Biz Haqimizda</a>
+        <a href="#works"><i class="fa-solid fa-chevron-right"></i> Ishlarimiz</a>
+        <a href="#contact"><i class="fa-solid fa-chevron-right"></i> Aloqa</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="fb-copy">© 2024 <span>AKFA Eshik & Romlar</span>. Barcha huquqlar himoyalangan. 💙</div>
+      <div class="fb-badges" style="margin-top:8px;">
+        <span class="fb-badge">🔒 SSL</span>
+        <span class="fb-badge">🏆 Premium</span>
+        <span class="fb-badge">⭐ 4.9</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+// LOADER
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');},1300);});
+
+// AOS
+AOS.init({duration:600,once:true,offset:40,easing:'ease-out-cubic'});
+
+// HEADER
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>50);});
+
+// MOBILE NAV
+function toggleMobileNav(){
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('burger').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobileNav').classList.contains('open')?'hidden':'';
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// MODAL (bottom sheet)
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modalForm').style.display='block';
+  document.getElementById('modalSuccess').style.display='none';
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalOutside(e){if(e.target===document.getElementById('modal'))closeModal();}
+
+// TELEGRAM
+const BOT_TOKEN="8606764820:AAEspn_sqtcX9pxjE2ZZfTKRhDvHP1maX08";
+const CHAT_ID="5266568060";
+async function sendToTelegram(text){
+  try{
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:CHAT_ID,text,parse_mode:'HTML'})
+    });return true;
+  }catch(e){return false;}
+}
+
+async function submitOrder(){
+  const name=document.getElementById('mName').value.trim();
+  const phone=document.getElementById('mPhone').value.trim();
+  const type=document.getElementById('mType').value;
+  const note=document.getElementById('mNote').value.trim();
+  if(!name){showToast('❗ Ismingizni kiriting!',true);return;}
+  if(!phone||phone.length<9){showToast('❗ Telefon raqamni kiriting!',true);return;}
+  const msg=`🚪 <b>YANGI BUYURTMA — AKFA ESHIK</b>\n\n👤 Ism: <b>${name}</b>\n📞 Telefon: <b>${phone}</b>\n🛠️ Mahsulot: <b>${type||'Belgilanmagan'}</b>\n💬 Izoh: ${note||"Yo'q"}\n\n⏰ Vaqt: ${new Date().toLocaleString('uz')}`;
+  await sendToTelegram(msg);
+  document.getElementById('modalForm').style.display='none';
+  document.getElementById('modalSuccess').style.display='block';
+  showToast('✅ Buyurtma yuborildi!');
+}
+
+async function submitContactForm(){
+  const name=document.getElementById('cName').value.trim();
+  const phone=document.getElementById('cPhone').value.trim();
+  const type=document.getElementById('cType').value;
+  const district=document.getElementById('cDistrict').value;
+  const note=document.getElementById('cNote').value.trim();
+  if(!name){showToast('❗ Ismingizni kiriting!',true);return;}
+  if(!phone||phone.length<9){showToast('❗ Telefon raqamni kiriting!',true);return;}
+  const msg=`📋 <b>BUYURTMA — AKFA ESHIK</b>\n\n👤 Ism: <b>${name}</b>\n📞 Telefon: <b>${phone}</b>\n🚪 Mahsulot: <b>${type||'Belgilanmagan'}</b>\n📍 Tuman: <b>${district||'Belgilanmagan'}</b>\n💬 Izoh: ${note||"Yo'q"}\n\n⏰ Vaqt: ${new Date().toLocaleString('uz')}`;
+  await sendToTelegram(msg);
+  ['cName','cPhone','cNote'].forEach(id=>{document.getElementById(id).value='';});
+  showToast('✅ Buyurtmangiz yuborildi! Tez orada siz bilan bog\'lanamiz.');
+}
+
+function showToast(msg,isError=false){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.style.background=isError?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,var(--blue),var(--cyan))';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// GALLERY FILTER
+function filterWorks(cat,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#galleryGrid .gallery-item').forEach(item=>{
+    item.style.display=(cat==='all'||item.getAttribute('data-cat')===cat)?'':'none';
+  });
+}
+
+// COUNTER
+function animateCounters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-count'));
+    const step=target/(1600/16);
+    let cur=0;
+    const t=setInterval(()=>{
+      cur=Math.min(cur+step,target);
+      el.textContent=Math.floor(cur);
+      if(cur>=target)clearInterval(t);
+    },16);
+  });
+}
+let counted=false;
+new IntersectionObserver((e)=>{if(e[0].isIntersecting&&!counted){counted=true;animateCounters();}},{threshold:.3}).observe(document.querySelector('.counter-section'));
+
+// PHONE FORMAT
+document.querySelectorAll('input[type="tel"]').forEach(inp=>{
+  inp.addEventListener('input',function(){
+    let v=this.value.replace(/\D/g,'');
+    if(v.startsWith('998'))v='+'+v;
+    else if(v.startsWith('9')&&v.length>2)v='+998'+v.slice(v.startsWith('998')?3:0);
+    this.value=v;
+  });
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+// ESC KEY
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeMobileNav();}});
+
+// PARTICLE CANVAS
+(function(){
+  const c=document.getElementById('bg-canvas');
+  const ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<45;i++)pts.push({x:Math.random()*1200,y:Math.random()*900,r:Math.random()*1.2+.2,dx:(Math.random()-.5)*.25,dy:(Math.random()-.5)*.18,o:Math.random()*.45+.15});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(99,179,237,${p.o})`;ctx.fill();
+      p.x+=p.dx;p.y+=p.dy;
+      if(p.x<0||p.x>W)p.dx*=-1;if(p.y<0||p.y>H)p.dy*=-1;
+    });requestAnimationFrame(draw);
+  }draw();
+})();
+</script>
+</body>
+</html>
